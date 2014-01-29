@@ -224,6 +224,15 @@ describe "JS behaviour", :js => true do
     within("#country") do
       page.should have_content("France")
     end
+
+    # Now change it back:
+    
+    bip_select @user, :country, "Italy"
+
+    visit user_path(@user)
+    within("#country") do
+      page.should have_content("Italy")
+    end
   end
 
   it "should apply the inner_class option to a select field" do

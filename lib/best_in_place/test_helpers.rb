@@ -33,6 +33,7 @@ module BestInPlace
         (function() {
           jQuery("##{id}").click();
           var opt_value = jQuery("##{id} select option:contains('#{name}')").attr('value');
+          jQuery("##{id} select option").attr('selected', false);
           jQuery("##{id} select option[value='" + opt_value + "']").attr('selected', true);
           jQuery("##{id} select").change();
         })();
