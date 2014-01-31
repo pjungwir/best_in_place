@@ -24,6 +24,13 @@ module BestInPlace
         display_value = value && !value.blank? ? value.join(',') : ''
         collection = opts[:collection].to_json
       end
+      if opts[:type] == :checkboxes  && !opts[:collection].blank?
+        h = Hash[opts[:collection]].stringify_keys
+        value = real_object.send(field)
+        value = value.map{|x| h[x]} if value
+        display_value = value && !value.blank? ? value.join(', ') : ''
+        collection = opts[:collection].to_json
+      end
       if opts[:type] == :select && !opts[:collection].blank?
         value = real_object.send(field)
         display_value = Hash[opts[:collection]].stringify_keys[value.to_s]

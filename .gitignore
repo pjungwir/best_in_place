@@ -10,3 +10,6 @@ test_app/tmp/**/*
 
 .rvmrc
 coverage
+
+.*.swp
+.*.swo
